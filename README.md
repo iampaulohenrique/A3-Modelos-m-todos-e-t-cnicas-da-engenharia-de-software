@@ -94,7 +94,12 @@ projeto/
     ├── admin.html
     │
     ├── css/
-    │   └── styles.css
+    │   ├──admin.css
+    │   ├──admin.css
+    │   ├──auth.css
+    │   ├──base.css
+    │   ├──dashboard.css
+    │   ├──styles.css
     │
     └── js/
         ├── api.js
