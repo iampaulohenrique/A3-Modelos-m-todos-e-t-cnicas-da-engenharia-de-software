@@ -222,3 +222,44 @@ textarea {
     border-bottom: 1px solid var(--border);
   }
 }
+
+/* Estilização suave para os Popups */
+.leaflet-popup-content-wrapper {
+  background: var(--panel);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+.leaflet-popup-tip {
+  background: var(--panel);
+}
+
+/* BOTÃO DE ALTERNÂNCIA DE TEMA DO MAPA */
+.theme-toggle-btn {
+  width: auto;
+  margin-top: 0;
+  background: var(--panel-2);
+  color: var(--text);
+  border: 1px solid var(--border);
+  padding: 6px 12px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+}
+
+.theme-toggle-btn:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  background: rgba(6, 182, 212, 0.1);
+}
+
+.theme-toggle-btn i {
+  font-size: 0.95rem;
+}
