@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Painel Administrativo — SP Rodovias</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="/css/admin.css">
+  <style>
+
+  </style>
+</head>
+<body>
+<header>
+  <h1><i class="bi bi-shield-gear"></i> Dashboard Preditivo <span class="badge" style="background:var(--talude); color:#fff;">Painel Admin</span></h1>
+  <div class="header-right">
+    <div><span class="status-dot"></span>Sessão Segura (Admin)</div>
+    <div id="clock">--:--:--</div>
+    <a href="/public/index.html" style="color:var(--muted); text-decoration:none; font-size:0.8rem; margin-left:10px; display:inline-flex; align-items:center; gap:4px;">
+      <i class="bi bi-arrow-left-short"></i> Voltar ao Mapa 
+    </a>
+  </div>
+</header>
+
+<div class="layout">
+  <aside class="sidebar">
+    <div class="card">
+      <h2>Gestão de Dados</h2>
+      <label for="filter-user">Buscar Usuário</label>
+      <input id="filter-user" type="text" placeholder="Nome ou e-mail..." />
+
+      <label for="filter-role">Filtrar por Papel</label>
+      <select id="filter-role">
+        <option value="all">Todos os papéis</option>
+        <option value="admin">Administrador</option>
+        <option value="user">Usuário Padrão</option>
+      </select>
+    </div>
+
+    <div class="card">
+      <h2>Ações de Sistema</h2>
+      <button id="export-logs-btn" class="secondary"><i class="bi bi-download"></i> Exportar Logs (JSON)</button>
+      <button id="purge-alerts-btn" style="background:var(--talude); color:#fff; margin-top:8px;"><i class="bi bi-trash-fill"></i> Limpar Alertas Antigos</button>
+    </div>
+  </aside>
+
+  <main class="admin-main">
+    
+    <section class="kpi-grid">
+      <div class="kpi-card">
+        <div class="kpi-title"><i class="bi bi-people-fill"></i> Total de Usuários</div>
+        <div class="kpi-value" id="kpi-users">0</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-title"><i class="bi bi-bell-fill"></i> Ocorrências Ativas</div>
+        <div class="kpi-value" id="kpi-active" style="color:var(--erosao);">0</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-title"><i class="bi bi-exclamation-triangle-fill"></i> Eventos Críticos</div>
+        <div class="kpi-value" id="kpi-critical" style="color:var(--talude);">7</div>
+      </div>
+    </section>
+
+    <section class="table-container">
+      <div class="table-header">
+        <h2><i class="bi bi-table"></i> Usuários Cadastrados</h2>
+        <span style="font-size:0.75rem; color:var(--muted);">Exibindo dados via API (/api/admin/users.php)</span>
+      </div>
+      <table>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Nome</th>
+            <th>E-mail</th>
+            <th>Papel</th>
+            <th>Ocorrências Registradas</th>
+            <th>Ações</th>
+          </tr>
+        </thead>
+        <tbody id="user-table-body">
+          <tr>
+            <td>#1</td>
+            <td><strong>Paulo Henrique</strong></td>
+            <td>paulo@exemplo.com</td>
+            <td><span class="badge-role role-admin">ADMIN</span></td>
+            <td>15</td>
+            <td><button class="secondary" style="padding:4px 8px; font-size:0.7rem; width:auto; margin:0;"><i class="bi bi-pencil-square"></i> Editar</button></td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="table-container" style="border:none;">
+      <div class="table-header" style="background:var(--panel-2);">
+        <h2><i class="bi bi-terminal-fill"></i> Logs de Auditoria do Sistema</h2>
+        <span style="font-size:0.75rem; color:var(--muted);">Real-time stream (/api/admin/logs.php)</span>
+      </div>
+      <div class="log-terminal" id="log-terminal">
+        <div class="log-line">
+          <span class="timestamp">[2026-08-25 11:20:01]</span>
+          <span class="level-INFO">INFO</span>
+          <span class="msg">Usuário ID #2 autenticado com sucesso.</span>
+        </div>
+        <div class="log-line">
+          <span class="timestamp">[2026-08-25 11:22:15]</span>
+          <span class="level-WARN">WARN</span>
+          <span class="msg">Ocorrência de Alagamento registrada nas coordenadas [-23.5505, -46.6333].</span>
+        </div>
+        <div class="log-line">
+          <span class="timestamp">[2026-08-25 11:25:00]</span>
+          <span class="level-ERROR">ERROR</span>
+          <span class="msg">Tentativa de acesso não autorizado à rota /api/admin/logs.php descartada.</span>
+        </div>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<script src="/js/admin.js"></script>
+<script>
+  function updateClock() {
+    const now = new Date();
+    document.getElementById('clock').textContent = now.toLocaleTimeString('pt-BR');
+  }
+  setInterval(updateClock, 1000);
+  updateClock();
+</script>
+</body>
+</html>

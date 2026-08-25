@@ -1,0 +1,132 @@
+@import url('dashboard.css'); /* Herda sidebar e layout */
+
+.admin-main {
+  flex: 1;
+  padding: 24px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+}
+
+.kpi-card {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 16px 20px;
+}
+
+.kpi-title {
+  font-size: 0.78rem;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.kpi-value {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--text);
+  margin-top: 6px;
+}
+
+.table-container {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.table-header {
+  padding: 14px 20px;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.table-header h2 {
+  font-size: 0.95rem;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  font-size: 0.85rem;
+}
+
+th, td {
+  padding: 12px 20px;
+  border-bottom: 1px solid var(--border);
+}
+
+th {
+  background: var(--panel-2);
+  color: var(--muted);
+  font-weight: 600;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+}
+
+tr:last-child td { border-bottom: none; }
+tr:hover td { background: rgba(255, 255, 255, 0.02); }
+
+.badge-role {
+  font-size: 0.7rem;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-weight: 600;
+}
+
+.role-admin {
+  background: rgba(239, 68, 68, 0.15);
+  color: var(--talude);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+}
+
+.role-user {
+  background: rgba(56, 189, 248, 0.15);
+  color: var(--alagamento);
+  border: 1px solid rgba(56, 189, 248, 0.3);
+}
+
+/* CONSOLE LOG TERMINAL */
+.log-terminal {
+  background: #070a10;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  font-family: 'Consolas', 'Courier New', monospace;
+  font-size: 0.8rem;
+  padding: 16px;
+  max-height: 250px;
+  overflow-y: auto;
+}
+
+.log-line {
+  margin-bottom: 6px;
+  line-height: 1.4;
+  display: flex;
+  gap: 12px;
+}
+
+.log-line .timestamp { color: var(--muted); }
+.log-line .level-INFO { color: var(--accent); }
+.log-line .level-WARN { color: var(--erosao); }
+.log-line .level-ERROR { color: var(--talude); }
+.log-line .msg { color: var(--text); }

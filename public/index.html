@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dashboard Preditivo — SP</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+<link rel="stylesheet" href="/css/dashboard.css" />
+</head>
+<body>
+
+<header>
+  <h1><i class="bi bi-radar"></i> Dashboard Preditivo <span class="badge">SP • Rodovias</span></h1>
+  
+  <div class="header-right">
+    <div><span class="status-dot"></span>Sistema online</div>
+    <div id="clock">--:--:--</div>
+    
+    <!-- ÁREA DE AUTENTICAÇÃO -->
+    <div class="auth-nav-links" style="display: flex; align-items: center; gap: 10px; margin-left: 10px; border-left: 1px solid var(--border); padding-left: 16px;">
+      <a href="login.html" class="nav-link-btn text-link">
+        <i class="bi bi-box-arrow-in-right"></i> Entrar
+      </a>
+    </div>
+  </div>
+</header>
+
+<div class="layout">
+  <aside class="sidebar">
+    <div class="card">
+      <h2>Novo Alerta</h2>
+
+      <label for="tipo">Tipo de ocorrência</label>
+      <select id="tipo">
+        <option value="alagamento">Alagamento</option>
+        <option value="erosao">Erosão</option>
+        <option value="talude">Queda de talude</option>
+      </select>
+
+      <label for="local">Rodovia / Rua</label>
+      <input id="local" type="text" placeholder="Ex: Rodovia Anchieta, km 12" />
+
+      <label for="comentario">Comentário</label>
+      <textarea id="comentario" placeholder="Descreva a ocorrência..."></textarea>
+
+      <div class="hint">
+        <i class="bi bi-geo-alt-fill"></i> <strong>Clique no mapa</strong> para marcar o local exato — o sistema busca automaticamente o nome da via e preenche o campo acima.
+      </div>
+      <div id="picked-coords"></div>
+
+      <button id="add-alert-btn" disabled><i class="bi bi-plus-circle-fill"></i> Adicionar alerta</button>
+    </div>
+
+    <div class="card" style="flex:1; display:flex; flex-direction:column; min-height:200px;">
+      <h2>Alertas Ativos</h2>
+      <div id="alert-list">
+        <div id="empty-list">Nenhum alerta cadastrado.</div>
+      </div>
+    </div>
+  </aside>
+
+  <div class="map-wrap">
+    <div id="map"></div>
+    <div class="legend">
+      <div><span class="dot" style="background:var(--alagamento)"></span> <i class="bi bi-tsunami"></i> Alagamento</div>
+      <div><span class="dot" style="background:var(--erosao)"></span> <i class="bi bi-exclamation-triangle-fill"></i> Erosão</div>
+      <div><span class="dot" style="background:var(--talude)"></span> <i class="bi bi-octagon-fill"></i> Queda de talude</div>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+<script src="/js/dashboard.js"></script>
+</body>
+</html>
