@@ -1,1 +1,67 @@
-<p> Hello World! </p>
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dashboard Preditivo — SP</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" />
+<link rel="stylesheet" href="/css/styles.css" />
+</head>
+<body>
+
+<header>
+  <h1>🛰️ Dashboard Preditivo <span class="badge">SP • Rodovias</span></h1>
+  <div class="header-right">
+    <div><span class="status-dot"></span>Sistema online</div>
+    <div id="clock">--:--:--</div>
+  </div>
+</header>
+
+<div class="layout">
+  <aside class="sidebar">
+    <div class="card">
+      <h2>Novo Alerta</h2>
+
+      <label for="tipo">Tipo de ocorrência</label>
+      <select id="tipo">
+        <option value="alagamento">💧 Alagamento</option>
+        <option value="erosao">⚠️ Erosão</option>
+        <option value="talude">🛑 Queda de talude</option>
+      </select>
+
+      <label for="local">Rodovia / Rua</label>
+      <input id="local" type="text" placeholder="Ex: Rodovia Anchieta, km 12" />
+
+      <label for="comentario">Comentário</label>
+      <textarea id="comentario" placeholder="Descreva a ocorrência..."></textarea>
+
+      <div class="hint">
+        📍 <strong>Clique no mapa</strong> para marcar o local exato — o sistema busca automaticamente o nome da via e preenche o campo acima.
+      </div>
+      <div id="picked-coords"></div>
+
+      <button id="add-alert-btn" disabled>Adicionar alerta</button>
+    </div>
+
+    <div class="card" style="flex:1; display:flex; flex-direction:column; min-height:200px;">
+      <h2>Alertas Ativos</h2>
+      <div id="alert-list">
+        <div id="empty-list">Nenhum alerta cadastrado.</div>
+      </div>
+    </div>
+  </aside>
+
+  <div class="map-wrap">
+    <div id="map"></div>
+    <div class="legend">
+      <div><span class="dot" style="background:var(--alagamento)"></span> Alagamento</div>
+      <div><span class="dot" style="background:var(--erosao)"></span> Erosão</div>
+      <div><span class="dot" style="background:var(--talude)"></span> Queda de talude</div>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
